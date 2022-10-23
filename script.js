@@ -2,7 +2,7 @@ let userGuessint=0;
 let usersGuessString="";
 let computerValue=0;
 function enterUsersGuess() {
-    usersGuessString =prompt();
+    usersGuessString ="Rock";
     usersGuessString=usersGuessString.toUpperCase();
     userGuessint=0;
     if(usersGuessString==="ROCK")userGuessint=1;
@@ -18,19 +18,19 @@ function whoWins() {
     enterUsersGuess();
     computerValueEnter();
     if(computerValue===3){
-        if(userGuessint===3)alert("it's a draw");
-        else if(userGuessint===2)alert("You lose!! Scissors beat paper");
-        else alert("You win!! Rock beats scissors");
+        if(userGuessint===3)console.log("it's a draw");
+        else if(userGuessint===2)console.log("You lose!! Scissors beat paper");
+        else console.log("You win!! Rock beats scissors");
     }
     else if(computerValue===2){
-        if(userGuessint===3)alert("You lose!! Scissors beat paper");
-        else if(userGuessint===2)alert("It's a draw");
-        else alert("You win!! Rock beats paper");
+        if(userGuessint===3)console.log("You win!! Scissors beat paper");
+        else if(userGuessint===2)console.log("It's a draw");
+        else console.log("You lose!! Paper beats rock");
     }
     else{
-        if(userGuessint===3)alert("You lose!! Rock beats scissors");
-        else if(userGuessint==2)alert("You win!! Paper beats rock");
-        else alert("It's a draw");
+        if(userGuessint===3)console.log("You lose!! Rock beats scissors");
+        else if(userGuessint==2)console.log("You win!! Paper beats rock");
+        else console.log("It's a draw");
     }
 }
 whoWins();
