@@ -1,0 +1,13 @@
+.container{
+    margin-top: 20%;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.score{
+    text-align: center;
+    transition: 0.2s;
+}
+html{
+    background-color: #b0b3b8;
+}

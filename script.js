@@ -1,36 +1,75 @@
-let userGuessint=0;
-let usersGuessString="";
-let computerValue=0;
-function enterUsersGuess() {
-    usersGuessString ="Rock";
-    usersGuessString=usersGuessString.toUpperCase();
-    userGuessint=0;
-    if(usersGuessString==="ROCK")userGuessint=1;
-    else if(usersGuessString==="PAPER")userGuessint=2;
-    else if(usersGuessString==="SCISSORS")userGuessint=3;
-    else alert("input value was not in the correct format");
-}
-function computerValueEnter() {
-    computerValue=Math.floor(Math.random()*3)+1;
-}
-//1-rock 2-paper 3-scissors
-function whoWins() {
-    enterUsersGuess();
-    computerValueEnter();
-    if(computerValue===3){
-        if(userGuessint===3)console.log("it's a draw");
-        else if(userGuessint===2)console.log("You lose!! Scissors beat paper");
-        else console.log("You win!! Rock beats scissors");
+var score = 0;
+var userChoice = -1;
+var container = document.querySelector('.container');
+var rockButton = document.querySelector('#rock');
+var paperButton = document.querySelector('#paper');
+var scissorsButton = document.querySelector('#scissors');
+var scoreText = document.querySelector('.score');
+function playRound(userChoice) {
+    var computerChoice = Math.floor(Math.random() * 3);
+    if (userChoice === 0) {
+        switch (computerChoice) {
+            case 0:
+                alert("It's a draw");
+                break;
+            case 1:
+                alert('You lose. Paper beats rock');
+                if (score > 0)
+                    score--;
+                break;
+            case 2:
+                alert('You win. Rock beats scissors');
+                score++;
+            default:
+                break;
+        }
     }
-    else if(computerValue===2){
-        if(userGuessint===3)console.log("You win!! Scissors beat paper");
-        else if(userGuessint===2)console.log("It's a draw");
-        else console.log("You lose!! Paper beats rock");
+    else if (userChoice === 1) {
+        switch (computerChoice) {
+            case 0:
+                alert("You win. Paper beats rock");
+                score++;
+                break;
+            case 1:
+                alert("It's a draw");
+                break;
+            case 2:
+                alert('You lose. Scissors beats paper');
+                if (score > 0)
+                    score--;
+                break;
+            default:
+                break;
+        }
     }
-    else{
-        if(userGuessint===3)console.log("You lose!! Rock beats scissors");
-        else if(userGuessint==2)console.log("You win!! Paper beats rock");
-        else console.log("It's a draw");
+    else {
+        switch (computerChoice) {
+            case 0:
+                alert("You lose. Rock beats scissors");
+                if (score > 0)
+                    score--;
+                break;
+            case 1:
+                alert("You win. Scissors beat paper");
+                score++;
+                break;
+            case 2:
+                alert("It's a draw");
+                break;
+            default:
+                break;
+        }
     }
 }
-whoWins();
+rockButton.addEventListener('click', function () {
+    playRound(0);
+    scoreText.innerText = score.toString();
+});
+paperButton.addEventListener('click', function () {
+    playRound(1);
+    scoreText.innerText = score.toString();
+});
+scissorsButton.addEventListener('click', function () {
+    playRound(2);
+    scoreText.innerText = score.toString();
+});
